@@ -4,7 +4,7 @@ import Header from "./header";
 const Layout = (props) => (
   <>
     <Head>
-      <title>Magic</title>
+      <title>Auth</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
@@ -15,13 +15,6 @@ const Layout = (props) => (
     </main>
 
     <footer>
-      <a
-        href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Powered by <img src="/vercel.svg" alt="Vercel Logo" />
-      </a>
     </footer>
 
     <style jsx global>{`
@@ -29,6 +22,7 @@ const Layout = (props) => (
       *::before,
       *::after {
         box-sizing: border-box;
+        font-family: "Roboto Condensed", sans-serif;
       }
       body {
         margin: 0;
@@ -46,6 +40,9 @@ const Layout = (props) => (
         display: flex;
         justify-content: center;
         align-items: center;
+      }
+      .click {
+        cursor: pointer;
       }
     `}</style>
   </>

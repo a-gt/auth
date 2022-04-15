@@ -1,21 +1,22 @@
 import Link from "next/link";
 import { useUser } from "../lib/hooks";
 import { useState, useEffect } from "react";
+import md5 from "md5";
+import useSWR from "swr";
+import { Button } from "@mantine/core";
 
 const time = 30;
 
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const Header = () => {
   const user = useUser();
-
-  function getCurrentSeconds() {
-    return Math.round(new Date().getTime() / 1000.0);
-  }
+  const t = Math.floor(Date.now() / (time * 1000));
 
   function getPercentage() {
-    return 100 - (time - (getCurrentSeconds() % time)) * (100 / time);
+    return (100 / (time * 1000)) * (Date.now() - time * 1000 * t);
   }
 
-  const [width, setWidth] = useState(getPercentage());
+  const [width, setWidth] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -24,9 +25,14 @@ const Header = () => {
       } else {
         setWidth(getPercentage());
       }
-    }, (time * 1000) / 200);
+    }, 100);
     return () => clearInterval(interval);
   }, [width, setWidth]);
+
+  const { data, error } = useSWR(
+    user ? `https://en.gravatar.com/${md5(user.email)}.json` : null,
+    fetcher
+  );
 
   return (
     <header>
@@ -48,15 +54,29 @@ const Header = () => {
                 </Link>
               </li>
               <li>
+                <img
+                  src={`https://www.gravatar.com/avatar/${md5(
+                    user.email
+                  )}?s=40&d=identicon`}
+                  alt=""
+                  className="profile-img"
+                />
+                {data && data?.entry?.length > 0 ? (
+                  <p className="username">{data.entry[0].displayName}</p>
+                ) : (
+                  <p className="username">{user.email}</p>
+                )}
                 <Link href="/api/logout">
-                  <div className="extend logout">Logout</div>
+                  <Button color="red">Logout</Button>
                 </Link>
               </li>
             </>
           ) : (
             <li>
               <Link href="/login">
-                <div className="extend">Login</div>
+                <Button variant="default" color="gray">
+                  Login
+                </Button>
               </Link>
             </li>
           )}
@@ -90,6 +110,9 @@ const Header = () => {
         }
         li:last-child {
           margin-left: auto;
+          display: flex;
+          align-items: center;
+          gap: 10px;
         }
         a {
           color: rgb(17, 17, 17);
@@ -108,10 +131,9 @@ const Header = () => {
           background-color: #f1f3f5;
           border-radius: 3px;
           text-align: center;
-          height: 30px;
-          padding: 4px;
+          padding: 3px;
           min-width: 100px;
-          transition: all 100ms ease-in-out;
+          transition: all 100ms ease-in;
         }
         .extend:hover {
           background-color: #e1e3e5;
@@ -120,9 +142,19 @@ const Header = () => {
           background: #f44336;
           border-color: #f44336;
           color: white;
+          display: inline-block;
         }
         .logout:hover {
           background-color: #f44336;
+        }
+        .profile-img {
+          display: inline;
+          border-radius: 50%;
+          width: 32px;
+          height: 32px;
+        }
+        .username {
+          margin: 0;
         }
       `}</style>
     </header>

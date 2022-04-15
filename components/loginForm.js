@@ -9,13 +9,12 @@ export default function LoginForm() {
 
   const [errorMsg, setErrorMsg] = useState("");
 
-  async function handleSubmit(e) {
-    e.preventDefault();
+  async function handleSubmit(email) {
 
     if (errorMsg) setErrorMsg("");
 
     const body = {
-      email: e.currentTarget.email.value,
+      email,
     };
 
     try {
