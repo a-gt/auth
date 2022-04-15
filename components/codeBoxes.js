@@ -16,7 +16,7 @@ export default function CodeBoxes() {
   });
 
   useEffect(() => {
-    setData(JSON.parse(window.localStorage.getItem("codes")));
+    setData(JSON.parse(window.localStorage.getItem("codes")) ?? data);
   }, []);
 
   useEffect(() => {
