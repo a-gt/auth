@@ -43,7 +43,75 @@ const Header = () => {
         <ul>
           <li>
             <Link href="/">
-              <a>Home</a>
+              <a>
+                <svg
+                  width={35}
+                  height={35}
+                  viewBox="0 0 350 350"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    width={350}
+                    height={350}
+                    rx={65}
+                    fill="url(#paint0_linear_103_7)"
+                  />
+                  <rect
+                    x="118.5"
+                    y="55.5"
+                    width={112}
+                    height={147}
+                    rx="52.5"
+                    stroke="#111111"
+                    strokeWidth={21}
+                  />
+                  <path
+                    d="M75 165C75 158.925 79.9249 154 86 154H264C270.075 154 275 158.925 275 165V282C275 294.15 265.15 304 253 304H97C84.8497 304 75 294.15 75 282V165Z"
+                    fill="url(#paint1_linear_103_7)"
+                  />
+                  <rect
+                    x={167}
+                    y={208}
+                    width={15}
+                    height={34}
+                    rx="7.5"
+                    fill="#61A3EA"
+                  />
+                  <rect
+                    x={160}
+                    y={235}
+                    width={30}
+                    height={15}
+                    rx="7.5"
+                    fill="#61A3EA"
+                  />
+                  <defs>
+                    <linearGradient
+                      id="paint0_linear_103_7"
+                      x1={175}
+                      y1={0}
+                      x2={175}
+                      y2={350}
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stopColor="#7ADBF0" />
+                      <stop offset={1} stopColor="#5486E7" />
+                    </linearGradient>
+                    <linearGradient
+                      id="paint1_linear_103_7"
+                      x1={175}
+                      y1={154}
+                      x2={175}
+                      y2={304}
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stopColor="#222222" />
+                      <stop offset={1} />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </a>
             </Link>
           </li>
           {user ? (
