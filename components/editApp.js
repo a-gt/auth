@@ -1,6 +1,7 @@
 import { RgbColorPicker } from "react-colorful";
 import { useState } from "react";
 import { TextInput, Button, Popover } from "@mantine/core";
+import { QRCodeSVG } from "qrcode.react";
 
 function rgbToObj(rgb) {
   let colors = ["r", "g", "b", "a"];
@@ -27,6 +28,7 @@ export default function EditAppForm({
   const [secret, setSecret] = useState(oldSecret);
   const [name, setName] = useState(oldName);
   const [opened, setOpened] = useState(false);
+  const [showSecret, setShowSecret] = useState(false);
 
   function getTextColor() {
     const rgb = { ...color };
@@ -110,9 +112,28 @@ export default function EditAppForm({
         </div>
         <div>
           <div className="buttons">
-            <span className="show">Show Secret</span>
+            <span className="show" onClick={() => setShowSecret(!showSecret)}>
+              {showSecret ? "Hide" : "Show"} Secret
+            </span>
           </div>
         </div>
+        {showSecret && (
+          <>
+            <div>
+              <strong>{secret}</strong>
+            </div>
+            <div>
+              <QRCodeSVG
+                value={
+                  "otpauth://totp/" +
+                  encodeURIComponent(name) +
+                  "?secret=" +
+                  encodeURIComponent(secret)
+                }
+              />
+            </div>
+          </>
+        )}
       </form>
 
       <style jsx>{`

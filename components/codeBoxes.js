@@ -4,6 +4,7 @@ import AddCode from "./addCode";
 import { useState, useEffect } from "react";
 import { showNotification } from "@mantine/notifications";
 import { useModals } from "@mantine/modals";
+import * as OTPAuth from "otpauth";
 
 export default function CodeBoxes() {
   const modals = useModals();
@@ -47,26 +48,51 @@ export default function CodeBoxes() {
       });
       return;
     }
-    setData({ ...data, [c.secret]: c });
-    showNotification({
-      title: `Application ${c.name} added!`,
-      styles: (theme) => ({
-        root: {
-          backgroundColor: theme.colors.dark[7],
-          borderColor: theme.colors.dark[7],
+    try {
+      OTPAuth.Secret.fromBase32(c.secret);
+      setData({ ...data, [c.secret]: c });
+      showNotification({
+        title: `Application ${c.name} added!`,
+        styles: (theme) => ({
+          root: {
+            backgroundColor: theme.colors.dark[7],
+            borderColor: theme.colors.dark[7],
 
-          "&::before": { backgroundColor: theme.colors.dark[3] },
-        },
+            "&::before": { backgroundColor: theme.colors.dark[3] },
+          },
 
-        title: { color: theme.white },
-        description: { color: theme.white },
-        closeButton: {
-          color: theme.colors.dark[3],
-          transition: "all 100ms ease-in-out",
-          "&:hover": { backgroundColor: "#000" },
-        },
-      }),
-    });
+          title: { color: theme.white },
+          description: { color: theme.white },
+          closeButton: {
+            color: theme.colors.dark[3],
+            transition: "all 100ms ease-in-out",
+            "&:hover": { backgroundColor: "#000" },
+          },
+        }),
+      });
+    } catch (e) {
+      showNotification({
+        title: `An error occurred. Most likely the secret is invaild.`,
+        styles: (theme) => ({
+          root: {
+            backgroundColor: theme.colors.red[7],
+            borderColor: theme.colors.red[7],
+
+            "&::before": { backgroundColor: theme.colors.red[3] },
+          },
+
+          title: { color: theme.white },
+          description: { color: theme.white },
+          closeButton: {
+            color: theme.colors.red[3],
+            transition: "all 100ms ease-in-out",
+            "&:hover": { backgroundColor: theme.colors.red[1] },
+          },
+        }),
+      });
+      console.log(e);
+      return;
+    }
   }
   return (
     <CodeContainer>
