@@ -10,6 +10,8 @@ export default function CodeContainer({ children }) {
           background-color: #f1f3f5;
           border: 1px solid #ccc;
           border-radius: 4px;
+          position: relative;
+          min-height: 124px;
         }
       `}</style>
     </>

@@ -7,39 +7,11 @@ const Home = () => {
 
   return (
     <Layout>
-      <p>
-        Apexio Auth is an online generator of one-time passwords, based on
-        TOTP (RFC 6238) algorithm. A web-based version of the Google
-        Authenticator mobile application.
-      </p>
       <CodeBoxes />
-
-      <h1>Magic Example</h1>
-
-      <p>Steps to test this authentication example:</p>
-
-      <ol>
-        <li>Click Login and enter an email.</li>
-        <li>
-          You'll be redirected to Home. Click on Profile, notice how your
-          session is being used through a token stored in a cookie.
-        </li>
-        <li>
-          Click Logout and try to go to Profile again. You'll get redirected to
-          Login.
-        </li>
-      </ol>
-
       <p>
-        To learn more about Magic, visit their{" "}
-        <a
-          href="https://docs.magic.link/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          documentation
-        </a>
-        .
+        Apexio Auth is an online generator of one-time passwords, based on TOTP
+        (RFC 6238) algorithm. A web-based version of the Google Authenticator
+        mobile application.
       </p>
 
       {user && (
@@ -56,6 +28,11 @@ const Home = () => {
         pre {
           white-space: pre-wrap;
           word-wrap: break-word;
+        }
+      `}</style>
+      <style jsx global>{`
+        .code-container {
+          margin-top: 20px;
         }
       `}</style>
     </Layout>
