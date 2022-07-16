@@ -18,7 +18,7 @@
     "cookie": "0.4.0",
     "magic-sdk": "^1.0.1",
     "md5": "^2.3.0",
-    "next": "latest",
+    "next": "12.1.6",
     "otpauth": "^7.1.1",
     "qrcode.react": "^3.0.1",
     "react": "^17.0.2",
