@@ -1,6 +1,6 @@
-import { useUser } from "../lib/hooks";
-import Layout from "../components/layout";
-import CodeBoxes from "../components/codeBoxes";
+import { useUser } from '../lib/hooks';
+import Layout from '../components/layout';
+import CodeBoxes from '../components/codeBoxes';
 
 const Home = () => {
   const user = useUser();
@@ -8,19 +8,7 @@ const Home = () => {
   return (
     <Layout>
       <CodeBoxes />
-      <p>
-        Apexio Auth is an online generator of one-time passwords, based on TOTP
-        (RFC 6238) algorithm. A web-based version of the Google Authenticator
-        mobile application.
-      </p>
-
-      {user && (
-        <>
-          <p>Currently logged in as:</p>
-          <pre>{JSON.stringify(user, null, 2)}</pre>
-        </>
-      )}
-
+      <p>Online Authenticator App</p>
       <style jsx>{`
         li {
           margin-bottom: 0.5rem;

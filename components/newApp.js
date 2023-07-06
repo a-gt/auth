@@ -1,11 +1,11 @@
-import { RgbColorPicker } from "react-colorful";
-import { useState } from "react";
-import { TextInput, Button, Popover } from "@mantine/core";
+import { RgbColorPicker } from 'react-colorful';
+import { useState } from 'react';
+import { TextInput, Button, Popover } from '@mantine/core';
 
 export default function NewAppForm({ onSubmit }) {
   const [color, setColor] = useState({ r: 17, g: 17, b: 17 });
-  const [secret, setSecret] = useState("");
-  const [name, setName] = useState("");
+  const [secret, setSecret] = useState('');
+  const [name, setName] = useState('');
   const [opened, setOpened] = useState(false);
 
   function getTextColor() {
@@ -13,7 +13,7 @@ export default function NewAppForm({ onSubmit }) {
     const brightness = Math.round(
       (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1000
     );
-    return brightness > 125 ? "black" : "white";
+    return brightness > 125 ? 'black' : 'white';
   }
 
   return (
@@ -69,8 +69,8 @@ export default function NewAppForm({ onSubmit }) {
             spacing="xs"
             shadow="xl"
             styles={{
-              body: { background: "#111", border: "1px solid #000" },
-              arrow: { background: "#111", borderColor: "#000" },
+              body: { background: '#111', border: '1px solid #000' },
+              arrow: { background: '#111', borderColor: '#000' },
             }}
             withArrow
           >

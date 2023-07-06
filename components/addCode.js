@@ -1,12 +1,12 @@
-import { useModals } from "@mantine/modals";
-import NewAppForm from "./newApp";
+import { useModals } from '@mantine/modals';
+import NewAppForm from './newApp';
 
 export default function AddCode({ onSubmit }) {
   const modals = useModals();
 
   const openNewModal = () => {
     const id = modals.openModal({
-      title: "New Application",
+      title: 'New Application',
       centered: true,
       children: (
         <NewAppForm

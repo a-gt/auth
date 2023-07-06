@@ -1,17 +1,17 @@
-import { TextInput, Button } from "@mantine/core";
-import { At } from "tabler-icons-react";
-import { useState } from "react";
-import { useForm } from "@mantine/form";
+import { TextInput, Button } from '@mantine/core';
+import { At } from 'tabler-icons-react';
+import { useState } from 'react';
+import { useForm } from '@mantine/form';
 
 const Form = ({ errorMessage, onSubmit }) => {
   const [loading, setLoading] = useState(false);
   const form = useForm({
     initialValues: {
-      email: "",
+      email: '',
     },
 
     validate: {
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
+      email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
     },
   });
 
@@ -29,7 +29,7 @@ const Form = ({ errorMessage, onSubmit }) => {
           placeholder="Your email"
           required
           name="email"
-          {...form.getInputProps("email")}
+          {...form.getInputProps('email')}
         />
       </label>
 

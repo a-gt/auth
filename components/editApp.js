@@ -1,12 +1,12 @@
-import { RgbColorPicker } from "react-colorful";
-import { useState } from "react";
-import { TextInput, Button, Popover } from "@mantine/core";
-import { QRCodeSVG } from "qrcode.react";
+import { RgbColorPicker } from 'react-colorful';
+import { useState } from 'react';
+import { TextInput, Button, Popover } from '@mantine/core';
+import { QRCodeSVG } from 'qrcode.react';
 
 function rgbToObj(rgb) {
-  let colors = ["r", "g", "b", "a"];
+  let colors = ['r', 'g', 'b', 'a'];
 
-  let colorArr = rgb.slice(rgb.indexOf("(") + 1, rgb.indexOf(")")).split(",");
+  let colorArr = rgb.slice(rgb.indexOf('(') + 1, rgb.indexOf(')')).split(',');
 
   let obj = new Object();
 
@@ -35,7 +35,7 @@ export default function EditAppForm({
     const brightness = Math.round(
       (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1000
     );
-    return brightness > 125 ? "black" : "white";
+    return brightness > 125 ? 'black' : 'white';
   }
 
   return (
@@ -81,8 +81,8 @@ export default function EditAppForm({
             spacing="xs"
             shadow="xl"
             styles={{
-              body: { background: "#111", border: "1px solid #000" },
-              arrow: { background: "#111", borderColor: "#000" },
+              body: { background: '#111', border: '1px solid #000' },
+              arrow: { background: '#111', borderColor: '#000' },
             }}
             withArrow
           >
@@ -113,7 +113,7 @@ export default function EditAppForm({
         <div>
           <div className="buttons">
             <span className="show" onClick={() => setShowSecret(!showSecret)}>
-              {showSecret ? "Hide" : "Show"} Secret
+              {showSecret ? 'Hide' : 'Show'} Secret
             </span>
           </div>
         </div>
@@ -125,9 +125,9 @@ export default function EditAppForm({
             <div>
               <QRCodeSVG
                 value={
-                  "otpauth://totp/" +
+                  'otpauth://totp/' +
                   encodeURIComponent(name) +
-                  "?secret=" +
+                  '?secret=' +
                   encodeURIComponent(secret)
                 }
               />

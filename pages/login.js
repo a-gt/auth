@@ -1,11 +1,11 @@
-import { useState } from "react";
-import Router from "next/router";
-import { useUser } from "../lib/hooks";
-import Layout from "../components/layout";
-import Form from "../components/form";
-import LoginForm from "../components/loginForm";
+import { useState } from 'react';
+import Router from 'next/router';
+import { useUser } from '../lib/hooks';
+import Layout from '../components/layout';
+import Form from '../components/form';
+import LoginForm from '../components/loginForm';
 
-import { Magic } from "magic-sdk";
+import { Magic } from 'magic-sdk';
 
 const Login = () => {
   return (

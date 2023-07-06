@@ -1,9 +1,9 @@
-import Link from "next/link";
-import { useUser } from "../lib/hooks";
-import { useState, useEffect } from "react";
-import md5 from "md5";
-import useSWR from "swr";
-import { Button } from "@mantine/core";
+import Link from 'next/link';
+import { useUser } from '../lib/hooks';
+import { useState, useEffect } from 'react';
+import md5 from 'md5';
+import useSWR from 'swr';
+import { Button } from '@mantine/core';
 
 const time = 30;
 
@@ -37,7 +37,7 @@ const Header = () => {
   return (
     <header>
       <div className="timer">
-        <div className="timer_line" style={{ width: width + "%" }}></div>
+        <div className="timer_line" style={{ width: width + '%' }}></div>
       </div>
       <nav>
         <ul>

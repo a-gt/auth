@@ -14,9 +14,6 @@ const Layout = (props) => (
       <div className="container">{props.children}</div>
     </main>
 
-    <footer>
-    </footer>
-
     <style jsx global>{`
       *,
       *::before,

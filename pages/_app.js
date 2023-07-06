@@ -1,7 +1,7 @@
-import Head from "next/head";
-import { MantineProvider } from "@mantine/core";
-import { NotificationsProvider } from "@mantine/notifications";
-import { ModalsProvider } from "@mantine/modals";
+import Head from 'next/head';
+import { MantineProvider } from '@mantine/core';
+import { NotificationsProvider } from '@mantine/notifications';
+import { ModalsProvider } from '@mantine/modals';
 
 export default function App(props) {
   const { Component, pageProps } = props;
@@ -20,7 +20,7 @@ export default function App(props) {
         withNormalizeCSS
         theme={{
           /** Put your mantine theme override here */
-          colorScheme: "light",
+          colorScheme: 'light',
         }}
       >
         <NotificationsProvider>

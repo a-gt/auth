@@ -1,9 +1,9 @@
-import * as OTPAuth from "otpauth";
-import { useState, useEffect } from "react";
-import { showNotification } from "@mantine/notifications";
-import { copyToClipboard } from "../lib/clipboard";
-import EditAppForm from "./editApp";
-import { useModals } from "@mantine/modals";
+import * as OTPAuth from 'otpauth';
+import { useState, useEffect } from 'react';
+import { showNotification } from '@mantine/notifications';
+import { copyToClipboard } from '../lib/clipboard';
+import EditAppForm from './editApp';
+import { useModals } from '@mantine/modals';
 
 function truncateTo(str, digits) {
   if (str.length <= digits) {
@@ -15,11 +15,11 @@ function truncateTo(str, digits) {
 
 export default function TOTPCode({
   secret,
-  name = "TOTP",
-  issuer = "ACME",
+  name = 'TOTP',
+  issuer = 'ACME',
   digits = 6,
   time = 30,
-  color = "rgb(17, 17, 17)",
+  color = 'rgb(17, 17, 17)',
   showTime = false,
   onSubmit = () => {},
   onDelete = () => {},
@@ -27,7 +27,7 @@ export default function TOTPCode({
   let totp = new OTPAuth.TOTP({
     issuer: issuer,
     label: name,
-    algorithm: "SHA1",
+    algorithm: 'SHA1',
     digits,
     period: time,
     secret: OTPAuth.Secret.fromBase32(secret),
@@ -69,7 +69,7 @@ export default function TOTPCode({
 
   const openEditModal = () => {
     const id = modals.openModal({
-      title: "Configure",
+      title: 'Configure',
       centered: true,
       children: (
         <EditAppForm
@@ -94,21 +94,21 @@ export default function TOTPCode({
           onClick={() => {
             copyToClipboard(code);
             showNotification({
-              title: `Code for ${name} is copied to clipboard`,
+              title: `Copied code for "${name}"`,
               styles: (theme) => ({
                 root: {
                   backgroundColor: theme.colors.dark[7],
                   borderColor: theme.colors.dark[7],
 
-                  "&::before": { backgroundColor: theme.colors.dark[3] },
+                  '&::before': { backgroundColor: theme.colors.dark[3] },
                 },
 
                 title: { color: theme.white },
                 description: { color: theme.white },
                 closeButton: {
                   color: theme.colors.dark[3],
-                  transition: "all 100ms ease-in-out",
-                  "&:hover": { backgroundColor: "#000" },
+                  transition: 'all 100ms ease-in-out',
+                  '&:hover': { backgroundColor: '#000' },
                 },
               }),
             });
@@ -118,7 +118,7 @@ export default function TOTPCode({
         </span>
         <div className="name">{name}</div>
         <div className="timer">
-          <div className="timer_line" style={{ height: width + "%" }}></div>
+          <div className="timer_line" style={{ height: width + '%' }}></div>
         </div>
         <div
           title="Configure or move"

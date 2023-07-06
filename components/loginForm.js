@@ -1,17 +1,16 @@
-import { useState } from "react";
-import Router from "next/router";
-import { useUser } from "../lib/hooks";
-import Form from "../components/form";
-import { Magic } from "magic-sdk";
+import { useState } from 'react';
+import Router from 'next/router';
+import { useUser } from '../lib/hooks';
+import Form from '../components/form';
+import { Magic } from 'magic-sdk';
 
 export default function LoginForm() {
-  useUser({ redirectTo: "/", redirectIfFound: true });
+  useUser({ redirectTo: '/', redirectIfFound: true });
 
-  const [errorMsg, setErrorMsg] = useState("");
+  const [errorMsg, setErrorMsg] = useState('');
 
   async function handleSubmit(email) {
-
-    if (errorMsg) setErrorMsg("");
+    if (errorMsg) setErrorMsg('');
 
     const body = {
       email,
@@ -22,21 +21,21 @@ export default function LoginForm() {
       const didToken = await magic.auth.loginWithMagicLink({
         email: body.email,
       });
-      const res = await fetch("/api/login", {
-        method: "POST",
+      const res = await fetch('/api/login', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + didToken,
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + didToken,
         },
         body: JSON.stringify(body),
       });
       if (res.status === 200) {
-        Router.push("/");
+        Router.push('/');
       } else {
         throw new Error(await res.text());
       }
     } catch (error) {
-      console.error("An unexpected error happened occurred:", error);
+      console.error('An unexpected error happened occurred:', error);
       setErrorMsg(error.message);
     }
   }
